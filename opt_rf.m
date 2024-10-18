@@ -13,7 +13,7 @@ T14_noise=Tij_noise(6);
 delta_ksi=1;
 it_times=0;
 
-u=1;
+u=5;
 u_trans=1;
 u_rot=1;
 u_ksi=[u_trans,u_trans,u_trans,u_rot,u_rot,u_rot];

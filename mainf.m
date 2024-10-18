@@ -3,12 +3,11 @@ clear all;
 init_trans_error=[];
 init_rot_error=[];
 trans_noise_level=0.1;
-rot_noise_level=0.005;
+rot_noise_level=0.01;
 
 % different noise levels
-for r_noise=1:5
-    for t_noise=1:5
-        for i=1:20
+for noise_level=1:3
+        for i=1:10
             angle1=[0;0;0];
             angle2=[0;0;0];
             angle3=[0;0;0];
@@ -102,16 +101,15 @@ for r_noise=1:5
         avg_opt_cov_rot_error=mean(opt_cov_rot_errors);
         avg_opt_rf_rot_error=mean(opt_rf_rot_errors);
                 
-        avg_init_trans_errors(r_noise,t_noise)=avg_init_trans_error;
-        avg_init_rot_errors(r_noise,t_noise)=avg_init_rot_error;
-        cov_trans_errors(r_noise,t_noise)=avg_opt_cov_trans_error;
-        rf_trans_errors(r_noise,t_noise)=avg_opt_rf_trans_error;
-        cov_rot_errors(r_noise,t_noise)=avg_opt_cov_rot_error;
-        rf_rot_errors(r_noise,t_noise)=avg_opt_rf_rot_error;
+        avg_init_trans_errors(noise_level)=avg_init_trans_error;
+        avg_init_rot_errors(noise_level)=avg_init_rot_error;
+        cov_trans_errors(noise_level)=avg_opt_cov_trans_error;
+        rf_trans_errors(noise_level)=avg_opt_rf_trans_error;
+        cov_rot_errors(noise_level)=avg_opt_cov_rot_error;
+        rf_rot_errors(noise_level)=avg_opt_rf_rot_error;
 
         
-        trans_noise_level=trans_noise_level+0.05;
-        rot_noise_level=rot_noise_level+0.005;
-    end
+        trans_noise_level=trans_noise_level+0.2;
+        rot_noise_level=rot_noise_level+0.02;
 end
 
